@@ -26,3 +26,7 @@ for key, value in dic.items():
 
 print(unique_dic)
 print(len(unique_dic))
+
+
+s = "abcdef"
+print(s[1:5:2])
