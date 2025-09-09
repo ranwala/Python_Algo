@@ -1,6 +1,6 @@
 import os
 
-file_path = '../../files/students/math'
+file_path = '../files/students/math'
 
 file_name = input('Enter file name: ')
 

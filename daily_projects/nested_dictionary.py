@@ -39,7 +39,7 @@ from pathlib import Path
 
 students = {}
 
-main_path = Path('/Users/chanduranwala/sample-projects/python_projects/algorithems/files')
+main_path = Path('/files')
 
 folders = main_path.rglob('*')
 

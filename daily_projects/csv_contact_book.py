@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-file_path = '../../contacts.csv'
+file_path = '../contacts.csv'
 
 name = input('Enter name: ')
 phone_number = input('Enter phone number: ')
