@@ -45,7 +45,6 @@ print(action_content, end='')
 
 while True:
     try:
-
         choice = input('\nEnter choice: ').strip()
 
         if choice == '1':
@@ -54,14 +53,19 @@ while True:
             add_expenses(description_input, amount_input)
 
         elif choice == '2':
-            list_expenses()
+            if len(expenses) > 0:
+                list_expenses()
+            else:
+                print('Please add some expenses to display')
 
         elif choice == '3':
             total_expenses()
 
         elif choice == '4':
-            file_name_input = input('Enter file name: ')
-            export_to_csv(file_name_input)
+            if len(expenses) > 0:
+                file_name_input = input('Enter file name: ')
+                export_to_csv(file_name_input)
+            print('Please add some expenses to store')
 
         elif choice == '5':
             print('Good Bye!')
