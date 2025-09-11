@@ -1,3 +1,9 @@
+import pandas as pd
+import os
+from datetime import datetime
+
+FILE_PATH = '../files/daily_project/bank_transaction.csv'
+
 balance = 0.0
 
 def deposit(amount: float):
@@ -16,6 +22,18 @@ def withdraw(amount):
 def check_balance():
     global balance
     print(f'Your balance is: ${balance}')
+
+def store(transaction, amount):
+    data_dict = {
+        'date': [datetime.now().strftime('%Y-%m-%d %H:%M:%s')],
+        'transaction': [transaction],
+        'amount': [amount]
+    }
+    df = pd.DataFrame(data_dict)
+    if not os.path.exists(FILE_PATH):
+        df.to_csv(FILE_PATH, index=False)
+    else:
+        df.to_csv(FILE_PATH, mode='a', header=False, index=False)
 
 
 print('Welcome To Simple Bank Simulator!')
@@ -40,6 +58,7 @@ while True:
                 raise ValueError
             else:
                 deposit(amount_to_deposit)
+                store('Deposit', amount_to_deposit)
 
         elif choice == '2':
             amount_to_withdraw = float(input('Enter the withdraw amount: ').strip())
@@ -47,6 +66,7 @@ while True:
                 raise ValueError
             else:
                 withdraw(amount_to_withdraw)
+                store('Withdraw', amount_to_withdraw)
 
         elif choice == '3':
             print(check_balance())
