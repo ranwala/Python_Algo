@@ -23,15 +23,17 @@ all_income = [row['median_income'] for row in housing_dict]
 max_income = max(all_income)
 max_income_index = next((i for i, row in enumerate(housing_dict) if row['median_income'] == max_income), -1)
 
-print(f'Loaded {NUMBER_OF_ROWS} rows.')
-print(f'Average Median Income: {round(total_median_income/NUMBER_OF_ROWS, 2)}')
-print(f'Average Median House Value: ${round(total_median_house_value/NUMBER_OF_ROWS, 2)}')
-
-# By using a list
-print(f'Highest Income(Optional): {max_income} (Row {max_income_index})')
-
 # By using a data frame
 max_value = df['median_income'].max()
 max_index = df['median_income'].idxmax()
-print(f'Highest Income: {max_value} (Row {max_index})')
-print(f'Total population (income > 6): {total_population}')
+
+content = f"""
+Loaded {NUMBER_OF_ROWS} rows.
+Average Median Income: {round(total_median_income/NUMBER_OF_ROWS, 2)}
+Average Median House Value: ${round(total_median_house_value/NUMBER_OF_ROWS, 2)}
+Highest Income(Optional): {max_income} (Row {max_income_index})
+Highest Income: {max_value} (Row {max_index})
+Total population (income > 6): {total_population}
+"""
+
+print(content.strip())
