@@ -1,25 +1,28 @@
 is_calculation_complete = False
 
-def add(num1, num2):
-    return num1 + num2
+def add(num1, num2): return num1 + num2
 
-def sub(num1, num2):
-    return num1 - num2
+def sub(num1, num2): return num1 - num2
 
-def mul(num1, num2):
-    return num1 * num2
+def mul(num1, num2): return num1 * num2
 
-def div(num1, num2):
-    return num1 / num2
+def div(num1, num2): return num1 / num2
 
-def mod(num1, num2):
-    return num1 % num2
+def mod(num1, num2): return num1 % num2
 
-def power(num1, num2):
-    return num1 ** num2
+def power(num1, num2): return num1 ** num2
 
-def sqrt(num1):
-    return num1 ** (1 / 2)
+def sqrt(num1): return num1 ** (1 / 2)
+
+operations = {
+    '1': ('+', add, 2),
+    '2': ('-', sub, 2),
+    '3': ('*', mul, 2),
+    '4': ('/', div, 2),
+    '5': ('%', mod, 2),
+    '6': ('**', power, 2),
+    '7': ('Square root', sqrt, 1),
+}
 
 print('Simple Calculator')
 print('================')
@@ -49,44 +52,25 @@ while True:
     if choice == '8':
         print('Thank you for using the calculator.')
         break
-    else:
-        if choice == '7':
-            number1 = float(input('Enter first number: '))
-        else:
-            number1 = float(input('Enter first number: '))
-            number2 = float(input('Enter second number: '))
+
+    if choice not in operations:
+        print('Invalid operation. Try again.')
+        continue
+
+    opp, func, args = operations[choice]
 
     try:
-        if choice == '1':
-            result = add(number1, number2)
-            print(f'Result: {number1} + {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '2':
-            result = sub(number1, number2)
-            print(f'Result: {number1} - {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '3':
-            result = mul(number1, number2)
-            print(f'Result: {number1} * {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '4':
-            result = div(number1, number2)
-            print(f'Result: {number1} / {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '5':
-            result = mod(number1, number2)
-            print(f'Result: {number1} % {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '6':
-            result = power(number1, number2)
-            print(f'Result: {number1} ** {number2} = {result}')
-            is_calculation_complete = True
-        elif choice == '7':
-            result = sqrt(number1)
-            print(f'Square root of: {number1} = {result}')
-            is_calculation_complete = True
+        if args == 1:
+            num = float(input('Enter a number: '))
+            result = func(num)
+            print(f'The {opp} of {num}: {result}')
         else:
-            print('Invalid choice.')
+            number1 = float(input('Enter the number1: '))
+            number2 = float(input('Enter the number2: '))
+            result = func(number1, number2)
+            print(f'Result {number1} {opp} {number2}: {result}')
+
+        is_calculation_complete = True
 
     except ZeroDivisionError:
         print('Invalid Input.')
