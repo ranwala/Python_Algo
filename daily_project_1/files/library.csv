@@ -2,3 +2,6 @@ title,author,isbn,genre,availability
 Book1,Author1,ISBN1,Crime,Not Available
 Book2,Author3,ISBN2,Drama,Available
 Book3,Author3,ISBN3,Romance,Available
+Book1,Author1,ISBN1,Crime,Not Available
+Book2,Author3,ISBN2,Drama,Available
+Book3,Author3,ISBN3,Romance,Available
