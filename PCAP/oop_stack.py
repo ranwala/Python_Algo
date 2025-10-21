@@ -36,6 +36,7 @@ class AddingStack(Stack):
 stack_object = AddingStack()
 
 print(stack_object.__dict__)
+print(AddingStack.__module__)
 
 # for i in range(5):
 #     stack_object.push(i)
